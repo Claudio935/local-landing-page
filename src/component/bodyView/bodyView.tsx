@@ -9,7 +9,7 @@ import Paragraph from "../texts/Paragraph";
 import Aside from "../Aside/Aside";
 import Img from "../Image/Image";
 import Icon from "../Icon/Icon";
-import React from "react"
+import React from "react";
 
 function BodyView() {
   const team: string = require("../assets/image/team.svg").default;
@@ -17,6 +17,7 @@ function BodyView() {
     require("../assets/image/graphql-icon.svg").default;
   const typescriptIcon: string =
     require("../assets/image/typescriptIcon.svg").default;
+  const isMobile = window.innerWidth <= 768;
 
   return (
     <React.Fragment>
@@ -41,6 +42,17 @@ function BodyView() {
                 </Paragraph>
               </BoxColumn>
             </Article>
+            {isMobile &&<Article>
+        <BoxColumn margin="0px 0px 0px 0px">
+            <CircleImage
+              data={team}
+              width="480px"
+              height="480px"
+              widthLowResolution="240px"
+              heightLowResolution="240px"
+            ></CircleImage>
+          </BoxColumn>
+        </Article>}
             <Article>
               <BoxColumn padding={"80px 20%"} id="experiencias">
                 <Title fontSize="36px">Experiências anteriores</Title>
@@ -66,22 +78,23 @@ function BodyView() {
             </Article>
           </BoxColumn>
         </Section>
-        <Aside width={"40%"}>
-          <BoxColumn margin="0px 45px 0px 0px">
-            <CircleImage data={team} width="480px" height="480px"></CircleImage>
+        {!isMobile &&<Aside width={"40%"}>
+        <BoxColumn margin="0px 45px 0px 0px">
+            <CircleImage
+              data={team}
+              width="480px"
+              height="480px"
+              widthLowResolution="240px"
+              heightLowResolution="240px"
+            ></CircleImage>
           </BoxColumn>
-        </Aside>
+        </Aside>}
       </BoxRow>
       <BoxColumn width="100%" id="tecnologias">
         <Title>Tecnologias já utilizadas</Title>
         <BoxGrid columns={3} margin={"80px 0px 0px 0px"}>
           <BoxColumn>
-            <Icon
-              icon={FaReact}
-              width="90px"
-              height="90px"
-              color={"#5ED3F3"}
-            />
+            <Icon icon={FaReact} width="90px" height="90px" color={"#5ED3F3"} />
             <SubTitle type="h5" margin="10px 0px 0px 0px">
               React
             </SubTitle>

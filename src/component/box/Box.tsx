@@ -25,6 +25,11 @@ flex-direction: row;
 align-items: center;
 padding: ${props => (props.padding ? props.padding : '0px')};
 background: ${({background})=>background? background: "#000000"};
+@media (max-width: 768px) {
+  display: flex;
+flex-direction: column;
+align-items: center;
+}
 `;
 export const BoxGrid = styled.div<BoxProps>`
   display: grid;
