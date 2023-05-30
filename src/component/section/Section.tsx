@@ -7,7 +7,7 @@ const Section = styled.section`
   align-items: center;
   justify-content: space-evenly;
   background-color: #000;
-  padding: 80px 0px;
+  padding: 280px 0px;
 `;
 
 export default Section;

@@ -67,7 +67,7 @@ function BodyView() {
   return (
     <Section ref={ref}>
       <BoxColumn>
-        <BoxColumn background="#000" padding="0px 0px 180px 0px">
+        <BoxColumn background="#000" padding="0px 0px 280px 0px">
           <BoxRow
             width="100%"
             justify={{content:"flex-end"}}
@@ -116,7 +116,7 @@ function BodyView() {
         <Title color="#fff" fontSize="48px" margin="0px 0px 48px 0px">
           Atividades Propostas.
         </Title>
-        <BoxRow padding="0px 24px 80px 24px" width="90%">
+        <BoxRow padding="0px 24px 280px 24px" width="90%">
           <BoxGrid columns={4} background="#000" padding="20px">
           {arrayCardsAtividades.map((item, index)=>{
             return(
@@ -128,7 +128,7 @@ function BodyView() {
         <Title color="#fff" fontSize="48px" margin="48px 0px 48px 0px">
           Outros serviços.
         </Title>
-        <BoxRow padding="0px 24px 80px 24px" width="90%">
+        <BoxRow padding="0px 24px 280px 24px" width="90%">
           <BoxGrid columns={3} background="#000" padding="20px" >
           {arrayCardsOutros.map((item, index)=>{
             return(
