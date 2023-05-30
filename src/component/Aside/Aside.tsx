@@ -1,10 +1,7 @@
 import styled from 'styled-components'
+import { InterfaceProps } from '../../interface/interfaceProps';
 
-interface Props {
-    width?: string;
-    background?: string;
-  }
-const Aside = styled.aside<Props>`
+const Aside = styled.aside<InterfaceProps>`
 width:  ${({width}) => width};
 background: ${({background})=>background? background: "#0000"}
 `;

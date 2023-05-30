@@ -5,6 +5,8 @@ interface Props {
   width?: string;
   widthLowResolution?: string;
   heightLowResolution?: string;
+  aniType?: string;
+  border?:string;
 }
 const breatheAnimation = keyframes`
   0% {   
@@ -17,13 +19,27 @@ const breatheAnimation = keyframes`
   70% {  box-shadow: 0px -2px 2px 1px  red; }
   100% {box-shadow: 2px 0px 2px 1px  red; }
  `;
-const CircleImage = styled.object<Props>`
+ const animationType = (
+
+  type?: string,
+
+) => {
+  
+  switch (type) {
+    case "breathe":
+      return breatheAnimation
+    default:
+    return ''      
+  
+}
+};
+const CircleImage = styled.img<Props>`
   border-radius: 100%;
   width: ${({ width }) => width};
   height: ${({ height }) => height};
 
-  border: 4px solid #a11480;
-  animation-name: ${breatheAnimation};
+  border:${({ border }) => border};;
+  animation-name: ${({ aniType }) => animationType(aniType)};
   animation-duration: 0.7s;
   animation-iteration-count: infinite;
   @media (max-width: 768px) {

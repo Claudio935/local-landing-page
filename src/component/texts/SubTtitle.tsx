@@ -1,32 +1,65 @@
 import styled from "styled-components";
+import { InterfaceProps } from '../../interface/interfaceProps';
+
 interface Props {
-  height?: string;
-  width?: string;
-  margin?: string;
+  style?: InterfaceProps;
   type?: string;
   children?: string;
 }
 
-const TextH2 = styled.h2<Props>`
-  color: #fff;
+const TextH2 = styled.h2<InterfaceProps>`
+  color: ${({color})=>color? color:"#fff"};
   margin: ${({ margin }) => (margin ? margin : "0px")};
+  font-size: ${({ fontSize }) => (fontSize )};
+  font-weight: ${({ fontWeight}) => fontWeight};
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+   justify-content: center;
+   text-align: center;
+  }
 `;
-const TextH3 = styled.h3<Props>`
-  color: #fff;
+const TextH3 = styled.h3<InterfaceProps>`
+  color: ${({color})=>color? color:"#fff"};
   margin: ${({ margin }) => (margin ? margin : "0px")};
+  font-size: ${({ fontSize }) => (fontSize )};
+  font-weight: ${({ fontWeight}) => fontWeight};
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+   justify-content: center;
+   text-align: center;
+  }
 `;
-const TextH4 = styled.h4<Props>`
-  color: #fff;
+const TextH4 = styled.h4<InterfaceProps>`
+  color: ${({color})=>color? color:"#fff"};
   margin: ${({ margin }) => (margin ? margin : "0px")};
+  font-size: ${({ fontSize }) => (fontSize)};
+  font-weight: ${({ fontWeight}) => fontWeight};
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+   justify-content: center;
+   text-align: center;
+  }
 `;
-const TextH5 = styled.h5<Props>`
-  color: #fff;
+const TextH5 = styled.h5<InterfaceProps>`
+  color: ${({color})=>color? color:"#fff"};
   margin: ${({ margin }) => (margin ? margin : "0px")};
+  font-size: ${({ fontSize }) => (fontSize )};
+  font-weight: ${({ fontWeight}) => fontWeight};
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+   justify-content: center;
+   text-align: center;
+  }
 `;
 
 const SubTitle: React.FC<Props> = (props) => {
+  const {type, style, children} = props
   let Component = TextH2;
-  const { type } = props;
+ 
   switch (type) {
     case "h2":
       Component = TextH2;
@@ -46,6 +79,6 @@ const SubTitle: React.FC<Props> = (props) => {
     default:
       break;
   }
-  return <Component {...props}>{props.children}</Component>;
+  return <Component {...style}>{children}</Component>;
 };
 export default SubTitle;

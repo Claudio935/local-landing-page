@@ -5,8 +5,10 @@ interface buttonObject {
   href?: string;
 }
 interface Props {
-  arrayButton?: Array<buttonObject>;
+  buttons?: Array<buttonObject>;
   margin?: string;
+  background?:string;
+  index?: number;
 }
 
 const NavStyled = styled.nav<Props>`
@@ -15,7 +17,8 @@ const NavStyled = styled.nav<Props>`
   width: 100%;
   align-items: center;
   justify-content: flex-end;
-  background-color: #000;
+  background: ${({background})=>background};
+  z-index: ${({index})=>index};
 `;
 const Button = styled.a`
   display: flex;
@@ -33,10 +36,10 @@ const Button = styled.a`
 `;
 
 const Nav: React.FC<Props> = (props) => {
-  const { arrayButton, margin } = props;
+  const { buttons } = props;
   return (
-    <NavStyled margin={margin}>
-      {arrayButton?.map((item, index) => {
+    <NavStyled {...props}>
+      {buttons?.map((item, index) => {
         return (
           <Button key={index} href={item.href}>
             {item?.nome}

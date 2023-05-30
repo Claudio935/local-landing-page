@@ -1,15 +1,17 @@
 import styled from 'styled-components'
 
 interface ParagraphProps {
-    justify?: string;
-  }
-
+    fontWeight?: number;
+    justify?:string;
+    fontSize?:string;
+}
 const Paragraph = styled.p<ParagraphProps>`
-  color: #fff;
-    margin: 0px;
-    text-align: ${({justify}) => (justify === "justificado" ? 'justify' : '')};
+  color:${({color}) => (color )};;
+  margin: 0px;
+  text-align: ${({justify}) => (justify === "justificado" ? 'justify' : '')};
   text-justify: ${({justify}) => (justify === "justificado" ? 'inter-word' : '')};
-
+  font-weight: ${({ fontWeight}) => fontWeight};
+  font-size: ${({ fontSize }) => (fontSize )};
 `;
 
 export default Paragraph

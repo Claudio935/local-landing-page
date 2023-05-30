@@ -6,7 +6,6 @@ interface Props {
     margin?: string;
     href?:string;
     icon?: IconType;
-  size?: number;
   color?: string;
   }
 const Anchor = styled.a<Props>`
@@ -18,7 +17,7 @@ const Anchor = styled.a<Props>`
 
 
 const Icon: React.FC<Props> = (props) =>{
-    const {href, width, height, icon, size, color} = props
+    const {href, width, height, icon, color} = props
     const IconComponent = icon
     return(
         <Anchor href={href}

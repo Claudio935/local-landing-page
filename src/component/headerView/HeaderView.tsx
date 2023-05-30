@@ -1,36 +1,29 @@
 import Header from "../header/Header";
-import Title from "../texts/Title";
-import CircleImage from "../Image/CircleImage";
 import { BoxColumn } from "../box/Box";
-import SubTitle from "../texts/SubTtitle";
-import Nav from "../nav/nav";
+import Slider from "../slider/Slider";
 
 function HeaderView() {
-  const devPhoto: string = require("../assets/image/imgDev.svg").default;
-
+  const yogaImg: string = require("../../assets/image/yoga.svg").default;
+  const exercicio: string = require("../../assets/image/exercicio.svg").default;
 
   return (
-    <Header>
-      <BoxColumn>
-        <Nav
-          margin="0px 0px 60px 0px"
-          arrayButton={[
-            { nome: "Quem sou", href: "#quemSou" },
-            { nome: "Experiências", href: "#experiencias" },
-            { nome: "Tecnologias", href: "#tecnologias" },
-            { nome: "contato", href: "#contato" },
-          ]}
-        />
-        <CircleImage data={devPhoto} width="360px" height="360px"></CircleImage>
-        <BoxColumn width={"auto"}>
-          <Title fontSize="52px">Claudio Freire</Title>
-          <SubTitle type="h2" margin="10px 0px 0px 0px">
-            Desenvolvedor Front-end junior
-          </SubTitle>
-          <SubTitle type="h4" margin="10px 0px 0px 0px">
-            React/Typescript/GraphQL
-          </SubTitle>
-        </BoxColumn>
+    <Header background="#ffff">
+      <BoxColumn background="#ffff" height="600px">
+        <Slider
+          images={[yogaImg, exercicio]}
+          titleStyle={{ color: "#fff", fontSize: "128px" }}
+          subTitleStyle={{
+            color: "#fff",
+            fontSize: "64px",
+            margin: "-25px 0px 0px 0px",
+            fontWeight: 700,
+          }}
+          paragraphStyle={{ color: "#fff", fontSize: "52px", fontWeight: 700 }}
+          boxText={{ justifycontent: "flex-start" }}
+          titleText="CPS"
+          subtitletext="Centro de Práticas Saudáveis"
+          paragraphText="Você no controle de sua saúde"
+        ></Slider>
       </BoxColumn>
     </Header>
   );

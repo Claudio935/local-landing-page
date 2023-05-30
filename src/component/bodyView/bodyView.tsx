@@ -1,130 +1,144 @@
-import { FaReact } from "react-icons/fa";
 import Title from "../texts/Title";
-import CircleImage from "../Image/CircleImage";
 import { BoxColumn, BoxGrid, BoxRow } from "../box/Box";
 import SubTitle from "../texts/SubTtitle";
 import Section from "../section/Section";
-import Article from "../article/Article";
-import Paragraph from "../texts/Paragraph";
-import Aside from "../Aside/Aside";
 import Img from "../Image/Image";
-import Icon from "../Icon/Icon";
-import React, {useState, useEffect} from "react";
+import { useInView } from 'react-intersection-observer';
+import { Card } from "../card/Card";
 
 function BodyView() {
-const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const team: string = require("../assets/image/team.svg").default;
-  const graphqlIcon: string =
-    require("../assets/image/graphql-icon.svg").default;
-  const typescriptIcon: string =
-    require("../assets/image/typescriptIcon.svg").default;
-    useEffect(() => {
-        const handleResize = () => {
-          setIsMobile(window.innerWidth <= 768);
-        };
-    
-        window.addEventListener('resize', handleResize);
-    
-        return () => {
-          window.removeEventListener('resize', handleResize);
-        };
-      }, []);
 
+
+  const yoga: string = require("../../assets/image/yoga2.svg").default;
+  const musculacao: string = require("../../assets/image/musculacao2.svg").default;
+  const danca: string = require("../../assets/image/danca.svg").default;
+  const ginastica: string = require("../../assets/image/ginastica.svg").default;
+  const equilibrio: string = require("../../assets/image/equilibrio.svg").default;
+  const comida: string = require("../../assets/image/comida.svg").default;
+  const massagem: string = require("../../assets/image/massagem.svg").default;
+  const pele: string = require("../../assets/image/pele.svg").default;
+
+  const arrayCardsAtividades = [
+    {
+      title: "Yoga",
+      url:yoga,
+      text: ` Nossos instrutores dedicados são guias habilidosos, compartilhando conhecimento e técnicas para ajudar os alunos a encontrarem o seu caminho único dentro da yoga. Cada postura, cada respiração e cada momento presente são oportunidades para explorar a flexibilidade física e mental, fortalecer o corpo, acalmar a mente e expandir a consciência. `
+    },
+    {
+      title: "Dança",
+      url:danca,
+      text: `Nossos talentosos instrutores são dedicados a guiar os alunos em uma jornada de descoberta e crescimento, compartilhando sua expertise e inspiração. Cada passo, cada gesto é uma oportunidade para se expressar e se conectar com o ritmo interior que nos impulsiona. A dança é uma linguagem universal que transcende barreiras e nos permite comunicar sem palavras.`
+    },
+    {
+      title: "Ginastica",
+      url:ginastica,
+      text: `Nossos instrutores altamente capacitados e apaixonados estão prontos para orientar e motivar os alunos em sua jornada de aprimoramento pessoal. Cada salto, cada acrobacia e cada rotina são oportunidades para desenvolver coordenação, equilíbrio e controle corporal.`
+    },
+    {
+      title: "Musculação",
+      url:musculacao,
+      text: ` nossa equipe de treinadores especializados está pronta para ajudá-lo a alcançar seus objetivos de condicionamento físico
+      e musculação. Com equipamentos modernos e programas personalizados, oferecemos um ambiente acolhedor e motivador para você se exercitar e atingir resultados visíveis`
+    },
+  ]
+  const arrayCardsOutros = [
+    {
+      title: "Restaurante",
+      url:comida,
+      text: `Nossos restaurantes naturais são espaços dedicados a oferecer uma experiência gastronômica saudável e consciente. É um convite para apreciar alimentos frescos, orgânicos e nutritivos, que são cuidadosamente selecionados para promover o bem-estar do corpo e da mente. `
+    },
+    {
+      title: "Massagem e relaxamento",
+      url:massagem,
+      text:`O serviço de massagem que oferecemos é uma experiência terapêutica e relaxante que visa restaurar o equilíbrio e promover o bem-estar do corpo e da mente. É um convite para cuidar de si mesmo, aliviar o estresse e rejuvenescer através do poder do toque terapêutico. Através das técnicas especializadas de massagem, nossos terapeutas treinados oferecem um momento de relaxamento profundo, aliviando a tensão muscular, melhorando a circulação sanguínea e promovendo a sensação de calma e tranquilidade. `
+    },
+    {
+      title: "Cuidado com a pele",
+      url:pele,
+      text: `O serviço de cuidados com a pele que oferecemos é uma abordagem holística para promover a saúde, beleza e bem-estar da sua pele. É um convite para nutrir, proteger e revitalizar a sua pele, proporcionando-lhe uma aparência radiante e saudável. Através dos nossos tratamentos e produtos especializados, buscamos oferecer soluções personalizadas para atender às necessidades individuais da sua pele. `
+    },
+
+  ]
+
+  const [ref, inView] = useInView({
+    triggerOnce: true, // Dispara a animação apenas uma vez
+    threshold: 0.1, // Define a porcentagem de visibilidade necessária para disparar a animação
+  });
   return (
-    <React.Fragment>
-      <BoxRow>
-        <Section>
-          <BoxColumn>
-            <Article>
-              <BoxColumn padding={"80px 20%"} id="quemSou">
-                <Title fontSize="36px">Quem Sou</Title>
-                <Paragraph justify={"justificado"}>
-                  Tenho habilidades sólidas em React, um dos frameworks mais
-                  populares para o desenvolvimento de interfaces de usuário. Com
-                  experiência em componentização, gerenciamento de estado com
-                  hooks e criação de aplicações de página única (SPAs), sou
-                  capaz de criar interfaces interativas, responsivas e
-                  escaláveis. Tenho conhecimento em boas práticas de
-                  desenvolvimento, como separação de preocupações e reutilização
-                  de componentes. Estou sempre atualizado com as últimas
-                  tendências e recursos do React, e estou pronto para aplicar
-                  meu conhecimento em projetos desafiadores e contribuir para o
-                  sucesso do time.
-                </Paragraph>
-              </BoxColumn>
-            </Article>
-            {isMobile &&<Article>
-        <BoxColumn margin="0px 0px 0px 0px">
-            <CircleImage
-              data={team}
+    <Section ref={ref}>
+      <BoxColumn>
+        <BoxColumn background="#000" padding="0px 0px 180px 0px">
+          <BoxRow
+            width="100%"
+            justify={{content:"flex-end"}}
+            position="relative"
+            id="animation"
+            animation={{
+              name: inView? "rotatex" : "",
+              duration: "6s",
+              recurrence: "1",
+              start: "0deg",
+              final: "-10deg",
+              origin:{
+                x:"100%",
+                y:"100%"
+              }
+            }}
+          >
+            <BoxColumn
+              align="flex-start"
+              position="absolute"
+              left="25%"
+              top="0px"
               width="480px"
-              height="480px"
-              widthLowResolution="240px"
-              heightLowResolution="240px"
-            ></CircleImage>
-          </BoxColumn>
-        </Article>}
-            <Article>
-              <BoxColumn padding={"80px 20%"} id="experiencias">
-                <Title fontSize="36px">Experiências anteriores</Title>
-                <Paragraph justify={"justificado"}>
-                  GRUPO AZUL - Desenvolvedor Front-End Junior
-                </Paragraph>
-                <Paragraph justify={"justificado"}>
-                  Periodo - 1 ano e 4 meses
-                </Paragraph>
-                <Paragraph justify={"justificado"}>
-                  Na minha experiência anterior como desenvolvedor front-end
-                  júnior em uma empresa, tive a oportunidade de trabalhar em
-                  diversos projetos utilizando React. Durante esse período, fui
-                  responsável por implementar interfaces de usuário responsivas
-                  e interativas, desenvolver componentes reutilizáveis, integrar
-                  APIs e colaborar com a equipe para solucionar problemas e
-                  implementar novos recursos. Através dessas atividades, pude
-                  aprimorar minhas habilidades em React, ganhar experiência
-                  prática no desenvolvimento front-end e contribuir para o
-                  sucesso dos projetos da empresa.
-                </Paragraph>
-              </BoxColumn>
-            </Article>
-          </BoxColumn>
-        </Section>
-        {!isMobile &&<Aside width={"40%"}>
-        <BoxColumn margin="0px 45px 0px 0px">
-            <CircleImage
-              data={team}
-              width="480px"
-              height="480px"
-              widthLowResolution="240px"
-              heightLowResolution="240px"
-            ></CircleImage>
-          </BoxColumn>
-        </Aside>}
-      </BoxRow>
-      <BoxColumn width="100%" id="tecnologias">
-        <Title>Tecnologias já utilizadas</Title>
-        <BoxGrid columns={3} margin={"80px 0px 0px 0px"}>
-          <BoxColumn>
-            <Icon icon={FaReact} width="90px" height="90px" color={"#5ED3F3"} />
-            <SubTitle type="h5" margin="10px 0px 0px 0px">
-              React
-            </SubTitle>
-          </BoxColumn>
-          <BoxColumn>
-            <Img src={graphqlIcon} width="90px" height="90px" />
-            <SubTitle type="h5" margin="10px 0px 0px 0px">
-              GraphQL
-            </SubTitle>
-          </BoxColumn>
-          <BoxColumn>
-            <Img src={typescriptIcon} width="90px" height="90px" />
-            <SubTitle type="h5" margin="10px 0px 0px 0px">
-              Typescript
-            </SubTitle>
-          </BoxColumn>
-        </BoxGrid>
+              
+            >
+              <Title color="#fff" fontSize="90px">
+                Busque pelo seu equilíbrio.
+              </Title>
+              <SubTitle style={{ color: "#fff", fontSize: "48px" }} type="h2">
+                Cuide de sua saúde.
+              </SubTitle>
+            </BoxColumn>
+
+            <Img
+              src={equilibrio}
+              height="500px"
+              width="auto"
+              position="absolute"
+              right="100%"
+              top="0px"
+              padding="0px 120px 0px 0px"
+              index="2"
+            ></Img>
+          </BoxRow>
+        </BoxColumn>
+        <Title color="#fff" fontSize="48px" margin="0px 0px 48px 0px">
+          Atividades Propostas.
+        </Title>
+        <BoxRow padding="0px 24px 80px 24px" width="90%">
+          <BoxGrid columns={4} background="#000" padding="20px">
+          {arrayCardsAtividades.map((item, index)=>{
+            return(
+              <Card img={item.url} title={item.title} text={item?.text} key={index}/>
+            )
+          })}
+          </BoxGrid>
+        </BoxRow>
+        <Title color="#fff" fontSize="48px" margin="48px 0px 48px 0px">
+          Outros serviços.
+        </Title>
+        <BoxRow padding="0px 24px 80px 24px" width="90%">
+          <BoxGrid columns={3} background="#000" padding="20px" >
+          {arrayCardsOutros.map((item, index)=>{
+            return(
+              <Card img={item.url} title={item.title} key={index} text={item.text}/>
+            )
+          })}
+          </BoxGrid>
+        </BoxRow>
       </BoxColumn>
-    </React.Fragment>
+    </Section>
   );
 }
 
