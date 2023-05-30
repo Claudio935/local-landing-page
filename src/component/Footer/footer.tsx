@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { InterfaceProps } from '../../interface/interfaceProps';
+import styled from "styled-components";
+import { InterfaceProps } from "../../interface/interfaceProps";
 
 const Footer = styled.footer<InterfaceProps>`
   display: flex;
@@ -12,6 +12,5 @@ const Footer = styled.footer<InterfaceProps>`
   background-repeat: no-repeat;
   background-size: cover;
 `;
-
 
 export default Footer;

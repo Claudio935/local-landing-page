@@ -1,4 +1,4 @@
-import  {  Component } from "react";
+import { Component } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { styled } from "styled-components";
 import Title from "../texts/Title";

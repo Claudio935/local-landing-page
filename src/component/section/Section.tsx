@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Section = styled.section`
   display: flex;
@@ -9,6 +9,5 @@ const Section = styled.section`
   background-color: #000;
   padding: 80px 0px;
 `;
-
 
 export default Section;
